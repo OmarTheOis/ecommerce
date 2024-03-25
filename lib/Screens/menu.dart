@@ -1,3 +1,4 @@
+import 'package:ecommerce/product_item.dart';
 import 'package:ecommerce/theme_manger.dart';
 import 'package:flutter/material.dart';
 
@@ -12,10 +13,9 @@ class ProductList extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+
         children: [
           Row(
-            //mainAxisAlignment: MainAxisAlignment.spaceBetween,//: MainAxisAlignment.,
             children: [
               Expanded(
                 child: TextFormField(
@@ -45,7 +45,7 @@ class ProductList extends StatelessWidget {
               const ImageIcon(AssetImage("assets/icons/cart.png"),color: ThemeManager.primaryColor,)
             ],
           ),
-
+        ProductItems()
         ],
       ),
     );
