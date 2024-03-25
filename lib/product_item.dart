@@ -1,19 +1,29 @@
 import 'package:ecommerce/theme_manger.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ProductItems extends StatelessWidget {
-  const ProductItems({super.key});
+  final image;
+  final name;
+  final description;
+  final price;
+  final sale;
+  final double reviews;
+  const ProductItems({super.key,
+  required this.image ,
+  required this.name,
+  required this.description,
+  required this.price,
+  required this.sale,
+  required this.reviews});
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Container(
-      margin: const EdgeInsets.all(15),
+      margin: const EdgeInsets.all(5),
       width: size.width * 0.5,
       height: size.height * 0.3,
       decoration: BoxDecoration(
-        //color: Colors.red,
         border: Border.all(color: Colors.blueGrey.withOpacity(0.5), width: 2),
         borderRadius: const BorderRadius.all(Radius.circular(15)),
       ),
@@ -23,14 +33,16 @@ class ProductItems extends StatelessWidget {
           Stack(
             alignment: Alignment.topRight,
             children: [
-              ClipRRect(
-                  borderRadius: const BorderRadius.only(
-                      topRight: Radius.circular(15),
-                      topLeft: Radius.circular(15)),
-                  child: Image.asset(
-                    "assets/images/image1.jpg",
-                    fit: BoxFit.fill,
-                  )),
+              Expanded(
+                child: ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(15),
+                        topLeft: Radius.circular(15)),
+                    child: Image.asset(
+                      image,
+                      fit: BoxFit.fill,
+                    )),
+              ),
               Padding(
                   padding: const EdgeInsets.all(10),
                   child: InkWell(
@@ -56,23 +68,23 @@ class ProductItems extends StatelessWidget {
                         bottomLeft: Radius.circular(15),
                         bottomRight: Radius.circular(15)),
                   ),
-                  child: const Column(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Supra toyota",
+                        name,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: ThemeManager.primaryColor,
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                       Text(
-                        "Toyota Supra is a sports car and grand tourer manufactured by the Toyota Motor Corporation beginning in 1978. The name supra is derived from the Latin prefix, meaning above",
+                        description,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: ThemeManager.primaryColor,
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
@@ -81,21 +93,21 @@ class ProductItems extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            "EGP 1,200",
+                            "Egp "+price,
                             overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: ThemeManager.primaryColor,
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           Text(
-                            "2000 Egp",
+                            sale+" Egp",
                             overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
+                            style: const TextStyle(
                               decoration: TextDecoration.lineThrough,
                               overflow: TextOverflow.ellipsis,
                               color: Colors.blueGrey,
@@ -108,18 +120,18 @@ class ProductItems extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            "Reviews (5.4)",
-                            style: TextStyle(
+                            "Reviews ($reviews)",
+                            style: const TextStyle(
                               overflow: TextOverflow.ellipsis,
                               color: ThemeManager.primaryColor,
                               fontSize: 12,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
-                          Icon(
+                          const Icon(
                             Icons.star,
                             color: Color(0xFFF4B400),
                           )
