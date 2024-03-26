@@ -8,23 +8,24 @@ class ProductItems extends StatelessWidget {
   final price;
   final sale;
   final double reviews;
-  const ProductItems({super.key,
-  required this.image ,
-  required this.name,
-  required this.description,
-  required this.price,
-  required this.sale,
-  required this.reviews});
+
+  const ProductItems(
+      {super.key,
+      required this.image,
+      required this.name,
+      required this.description,
+      required this.price,
+      required this.sale,
+      required this.reviews});
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Container(
       margin: const EdgeInsets.all(5),
-      width: size.width * 0.5,
-      height: size.height * 0.3,
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.blueGrey.withOpacity(0.5), width: 2),
+        color: Colors.blueGrey,
+        border: Border.all(color: Colors.blueGrey.withOpacity(0.5), width: 1),
         borderRadius: const BorderRadius.all(Radius.circular(15)),
       ),
       child: Column(
@@ -93,7 +94,7 @@ class ProductItems extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            "Egp "+price,
+                            "Egp " + price,
                             overflow: TextOverflow.ellipsis,
                             style: const TextStyle(
                               color: ThemeManager.primaryColor,
@@ -105,7 +106,7 @@ class ProductItems extends StatelessWidget {
                             width: 10,
                           ),
                           Text(
-                            sale+" Egp",
+                            sale + " Egp",
                             overflow: TextOverflow.ellipsis,
                             style: const TextStyle(
                               decoration: TextDecoration.lineThrough,
